@@ -1,0 +1,22 @@
+<main>
+  <input id="input1" type="number" [(ngModel)]="mainState.minutes" [style.pointer-events]="running ? 'none' : 'auto'">
+  <input id="input2" type="number" [(ngModel)]="mainState.seconds" [style.pointer-events]="running ? 'none' : 'auto'">
+
+  <mat-spinner id="spinner" *ngIf="running"></mat-spinner>
+
+  <input id="input3" type="number" [(ngModel)]="mainState.minutesUntilPause"
+    [style.pointer-events]="running ? 'none' : 'auto'">
+  <input id="input4" type="number" [(ngModel)]="mainState.secondsUntilPause"
+    [style.pointer-events]="running ? 'none' : 'auto'">
+
+  <button id="startAndPauseBtn" mat-raised-button (click)="run()">Start / Pause</button>
+
+  <mat-card *ngIf="mainState.banner" (click)="closeBanner()">
+    <p>This app uses Local Storage to persist data 💾</p>
+    <button mat-button>Okay that's fine 😊</button>
+  </mat-card>
+
+  <a href="https://github.com/TGotwig/squat-timer" target="_blank">
+    <img src="assets/github-icon.png" alt="githubLink">
+  </a>
+</main>

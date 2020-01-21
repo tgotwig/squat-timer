@@ -1,0 +1,56 @@
+main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+#input1 { grid-area: 1 / 2 / 2 / 3; }
+#input2 { grid-area: 1 / 3 / 2 / 4; }
+#input3 { grid-area: 2 / 2 / 3 / 3; }
+#input4 { grid-area: 2 / 3 / 3 / 4; }
+#startAndPauseBtn { 
+  grid-area: 3 / 2 / 4 / 4;
+  font-size: 5rem;
+  background-color: #F56B2C;
+  color: #F7F03B;
+  border-radius: 0;
+  border: 4px solid black;
+}
+#spinner { 
+  grid-area: 1 / 4 / 2 / 5; 
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type=number] {
+  font-size: 11rem;
+  width: 100%;
+  border: 4px solid;
+  box-sizing: border-box;
+  background-color: #F7F03B;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -moz-appearance: textfield;
+}
+
+a, img {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  width: 5rem;
+}
+
+.mat-card {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background-color: #F7F03B;
+  max-width: 12rem;
+}
+
+button::-webkit-inner-spin-button, 
+button::-webkit-outer-spin-button { -webkit-appearance: none; }
