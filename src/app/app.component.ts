@@ -14,8 +14,9 @@ export class AppComponent implements OnInit {
     secondsUntilPause: 0,
     banner: true
   }
-  interval
+  interval: number
   running = false
+  audioPlayer: HTMLAudioElement
 
   ngOnInit() {
     const state = JSON.parse(localStorage.getItem('squatTimer'))
@@ -36,6 +37,8 @@ export class AppComponent implements OnInit {
         }
       })
     })
+
+    this.audioPlayer = <HTMLAudioElement>document.getElementById('audio')
   }
 
   closeBanner() {
@@ -70,6 +73,7 @@ export class AppComponent implements OnInit {
         finished = true
         clearInterval(this.interval)
         this.running = false
+        this.audioPlayer.play()
       }
       if (!finished) {
         if (this.mainState.seconds === 0) {
@@ -83,6 +87,7 @@ export class AppComponent implements OnInit {
       if (counter === totalSecondsUntilPause) {
         clearInterval(this.interval)
         this.running = false
+        this.audioPlayer.play()
       }
       this.save()
     }, 1000)
