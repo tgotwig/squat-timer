@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import hotkeys from 'hotkeys-js'
 
 @Component({
   selector: 'app-root',
@@ -39,6 +40,11 @@ export class AppComponent implements OnInit {
     })
 
     this.audioPlayer = <HTMLAudioElement>document.getElementById('audio')
+
+    hotkeys('enter, space', (event) => {
+      event.preventDefault() 
+      this.run()
+    })
   }
 
   closeBanner() {
