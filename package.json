@@ -8,6 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "build:os": "npm run build:osx ; npm run build:linux",
+    "build:osx": "npx nativefier -n squat-timer -p osx -f https://tgotwig.github.io/squat-timer/ bin",
+    "build:linux": "npx nativefier -n squat-timer -p linux https://tgotwig.github.io/squat-timer/ bin",
     "deploy": "ng build --prod --base-href https://tgotwig.github.io/squat-timer/ && npx angular-cli-ghpages"
   },
   "private": true,
