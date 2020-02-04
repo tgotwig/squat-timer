@@ -7,7 +7,13 @@
   <input id="input1" type="number" [(ngModel)]="mainState.minutes" [style.pointer-events]="running ? 'none' : 'auto'">
   <input id="input2" type="number" [(ngModel)]="mainState.seconds" [style.pointer-events]="running ? 'none' : 'auto'">
 
-  <mat-spinner id="spinner" *ngIf="running"></mat-spinner>
+  <div id="runStatus" *ngIf="running">
+    <mat-spinner></mat-spinner>
+    <div id="goalText">
+      <p>Goal =&nbsp;</p>
+      <p>{{goalTime}}</p>
+    </div>
+  </div>
 
   <input id="input3" type="number" [(ngModel)]="mainState.minutesUntilPause">
   <input id="input4" type="number" [(ngModel)]="mainState.secondsUntilPause">

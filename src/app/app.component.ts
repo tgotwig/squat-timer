@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import hotkeys from 'hotkeys-js'
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
   interval: number
   running = false
   audioPlayer: HTMLAudioElement
+  goalTime: string
 
   ngOnInit() {
     const state = JSON.parse(localStorage.getItem('squatTimer'))
@@ -68,11 +70,23 @@ export class AppComponent implements OnInit {
 
   startTimer() {
     let finished = false
-
-    const totalSecondsUntilPause =
-      this.mainState.minutesUntilPause * 60
-      + this.mainState.secondsUntilPause
+    const minutesUntilPause = this.mainState.minutesUntilPause
+    const secondsUntilPause = this.mainState.secondsUntilPause
+    const totalSecondsUntilPause = minutesUntilPause * 60 + secondsUntilPause
     let counter = 0
+    
+    const minutes = this.mainState.minutes
+    const seconds = this.mainState.seconds
+    const currentSeconds = minutes * 60 + seconds
+    if (currentSeconds < totalSecondsUntilPause) {
+      this.goalTime = '00:00'
+    } else {
+      var time = moment.duration(`00:${minutesUntilPause}:${secondsUntilPause}`);
+      var date = moment(`2014-06-07 00:${minutes}:${seconds}`);
+      date.subtract(time);
+      const timeSlices = date.format().split(/[:+]/)
+      this.goalTime = `${timeSlices[1]}:${timeSlices[2]}`
+    }
 
     this.interval = setInterval(() => {
       if (this.mainState.minutes === 0 && this.mainState.seconds === 0) {
