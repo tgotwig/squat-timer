@@ -9,10 +9,8 @@
 
   <mat-spinner id="spinner" *ngIf="running"></mat-spinner>
 
-  <input id="input3" type="number" [(ngModel)]="mainState.minutesUntilPause"
-    [style.pointer-events]="running ? 'none' : 'auto'">
-  <input id="input4" type="number" [(ngModel)]="mainState.secondsUntilPause"
-    [style.pointer-events]="running ? 'none' : 'auto'">
+  <input id="input3" type="number" [(ngModel)]="mainState.minutesUntilPause">
+  <input id="input4" type="number" [(ngModel)]="mainState.secondsUntilPause">
 
   <button id="startAndPauseBtn" mat-raised-button (click)="run()">Start / Pause</button>
 
