@@ -1,31 +1,36 @@
-<main>
+<mat-card id="banner" *ngIf="mainState.banner" (click)="closeBanner()">
+  <p>This app uses Local Storage to persist data 💾</p>
+  <button mat-button>Okay that's fine 😊</button>
+</mat-card>
+<div id="mainWrapper">
   <audio id="audio">
     <source src="assets/finished.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <input id="input1" type="number" [(ngModel)]="mainState.minutes" [style.pointer-events]="running ? 'none' : 'auto'">
-  <input id="input2" type="number" [(ngModel)]="mainState.seconds" [style.pointer-events]="running ? 'none' : 'auto'">
-
-  <div id="runStatus" *ngIf="running">
-    <mat-spinner></mat-spinner>
-    <div id="goalText">
-      <p>Goal =&nbsp;</p>
-      <p>{{goalTime}}</p>
+  <main>
+    <div id="div1">
+      <input id="input1" type="number" [(ngModel)]="mainState.minutes"
+        [style.pointer-events]="running ? 'none' : 'auto'">
+      <input id="input2" type="number" [(ngModel)]="mainState.seconds"
+        [style.pointer-events]="running ? 'none' : 'auto'">
     </div>
-  </div>
 
-  <input id="input3" type="number" [(ngModel)]="mainState.minutesUntilPause">
-  <input id="input4" type="number" [(ngModel)]="mainState.secondsUntilPause">
+    <div id="div2">
+      <input id="input3" type="number" [(ngModel)]="mainState.minutesUntilPause">
+      <input id="input4" type="number" [(ngModel)]="mainState.secondsUntilPause">
+    </div>
 
-  <button id="startAndPauseBtn" mat-raised-button (click)="run()">Start / Pause</button>
+    <button id="startAndPauseBtn" mat-raised-button (click)="run()">Start / Pause</button>
 
-  <mat-card *ngIf="mainState.banner" (click)="closeBanner()">
-    <p>This app uses Local Storage to persist data 💾</p>
-    <button mat-button>Okay that's fine 😊</button>
-  </mat-card>
+    <div id="runStatus" [style.opacity]="running ? 1 : 0">
+      <mat-spinner></mat-spinner>
+      <p class="blink_me">Goal 👇</p>
+      <p id="goalTime">{{goalTime}}</p>
+    </div>
 
-  <a href="https://github.com/TGotwig/squat-timer" target="_blank">
-    <img src="assets/github-icon.png" alt="githubLink">
-  </a>
-</main>
+    <a href="https://github.com/TGotwig/squat-timer" target="_blank">
+      <img src="assets/github-icon.png" alt="githubLink">
+    </a>
+  </main>
+</div>
