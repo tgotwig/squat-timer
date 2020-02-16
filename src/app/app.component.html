@@ -23,7 +23,7 @@
 
     <button id="startAndPauseBtn" mat-raised-button (click)="run()">Start / Pause</button>
 
-    <div id="runStatus" [style.opacity]="running ? 1 : 0">
+    <div id="runStatus" *ngIf="running">
       <mat-spinner></mat-spinner>
       <p class="blink_me">Goal 👇</p>
       <p id="goalTime">{{goalTime}}</p>
