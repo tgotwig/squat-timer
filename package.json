@@ -11,7 +11,7 @@
     "build:os": "npm run build:osx ; npm run build:linux",
     "build:osx": "npx nativefier --clear-cache -n squat-timer -p osx -f https://tgotwig.github.io/squat-timer/ bin",
     "build:linux": "npx nativefier --clear-cache -n squat-timer -p linux https://tgotwig.github.io/squat-timer/ bin",
-    "deploy": "ng build --prod --base-href https://tgotwig.github.io/squat-timer/ && npx angular-cli-ghpages"
+    "deploy": "ng build --prod && npx firebase-tools deploy"
   },
   "private": true,
   "dependencies": {
