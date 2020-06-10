@@ -41,10 +41,10 @@ export class AppComponent implements OnInit {
       })
     })
 
-    this.audioPlayer = <HTMLAudioElement>document.getElementById('audio')
+    this.audioPlayer = document.getElementById('audio') as HTMLAudioElement
 
     hotkeys('enter, space', (event) => {
-      event.preventDefault() 
+      event.preventDefault()
       this.run()
     })
   }
@@ -65,6 +65,7 @@ export class AppComponent implements OnInit {
     } else {
       clearInterval(this.interval)
       this.running = false
+      this.audioPlayer.play()
     }
   }
 
@@ -74,16 +75,16 @@ export class AppComponent implements OnInit {
     const secondsUntilPause = this.mainState.secondsUntilPause
     const totalSecondsUntilPause = minutesUntilPause * 60 + secondsUntilPause
     let counter = 0
-    
+
     const minutes = this.mainState.minutes
     const seconds = this.mainState.seconds
     const currentSeconds = minutes * 60 + seconds
     if (currentSeconds < totalSecondsUntilPause) {
       this.goalTime = '00:00'
     } else {
-      var time = moment.duration(`00:${minutesUntilPause}:${secondsUntilPause}`);
-      var date = moment(`2014-06-07 00:${minutes}:${seconds}`);
-      date.subtract(time);
+      let time = moment.duration(`00:${minutesUntilPause}:${secondsUntilPause}`)
+      let date = moment(`2014-06-07 00:${minutes}:${seconds}`)
+      date.subtract(time)
       const timeSlices = date.format().split(/[:+]/)
       this.goalTime = `${timeSlices[1]}:${timeSlices[2]}`
     }
